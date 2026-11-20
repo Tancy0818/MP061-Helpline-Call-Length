@@ -1,0 +1,176 @@
+G247 MP061 - Stage 1 evidence; original rows, no cleaning applied
+Verified SHA-256 fingerprints: {
+  "train.csv": "fbdf5a68c858dcbb086a41929d2551133c9b84bac87a668a955767af8be260fa",
+  "later.csv": "3a28446d825420e389995c60f038a3ef4845b41aa2598f65dd9220dec2078ece",
+  "holdout_features.csv": "9fa39ee3ccbf2a105c1478e11f0f7485904905fbba17bfa4a0e685aff2008e50"
+}
+Rows: {'train': 1000, 'later': 300, 'holdout': 250}
+Training missing values:
+ record_id                   0
+date                        0
+queue_wait_sec              0
+agent_exp_months            0
+previous_calls              0
+issue_count                 0
+hour                        0
+caller_age                  0
+language                    0
+team                        0
+duration_from_phone_bill    0
+handle_min                  0
+Numeric summary:
+        queue_wait_sec  agent_exp_months  previous_calls  issue_count         hour   caller_age  duration_from_phone_bill   handle_min
+count     1000.000000       1000.000000     1000.000000  1000.000000  1000.000000  1000.000000               1000.000000  1000.000000
+mean       230.307000         29.455000        5.022000     2.880000    15.028000    49.335000                 15.385670    16.976770
+std        350.047614         17.428417        2.942478     1.211225     4.076989    18.034079                  4.575735    16.076405
+min       -999.000000          0.000000        0.000000     1.000000     8.000000    18.000000                  0.690000     0.840000
+25%        126.000000         14.000000        3.000000     2.000000    12.000000    33.000000                 12.015000    12.127500
+50%        286.000000         30.000000        5.000000     3.000000    15.000000    50.000000                 15.410000    15.440000
+75%        449.250000         45.000000        8.000000     4.000000    18.000000    65.000000                 18.612500    18.857500
+max        600.000000         60.000000       10.000000     5.000000    22.000000    80.000000                 28.050000   241.300000
+
+TARGET TYPOS: upper-tail gap {'lower': 28.0, 'upper': 66.0, 'ratio': 2.357142857142857}
+Confirmed 10x typo count: 12
+record_id       date  handle_min  duration_from_phone_bill
+   R00013 2026-01-03       111.0                     11.07
+   R00308 2026-02-28       241.3                     24.26
+   R00348 2026-03-07       221.4                     22.04
+   R00416 2026-03-20       102.9                     10.21
+   R00444 2026-03-26       176.1                     17.70
+   R00576 2026-04-16        86.1                      8.57
+   R00765 2026-05-18       178.6                     17.69
+   R00826 2026-05-29       125.2                     12.31
+   R00896 2026-06-10       180.7                     18.03
+   R00977 2026-06-26        66.0                      6.72
+   R00984 2026-06-27       147.7                     14.81
+   R00990 2026-06-28       129.1                     12.97
+Max phone-bill difference, normal targets: 0.6799999999999997
+Max difference after diagnostic division by 10: 0.20999999999999908
+
+LEAKAGE: columns absent from holdout: ['duration_from_phone_bill', 'handle_min']
+Phone-bill correlation on non-typo rows: 0.9990440307141184
+PROBLEM.md says the bill is available later, after the prediction event.
+
+SENTINELS: repeated special values across numeric predictors
+queue_wait_sec most frequent: {-999: 58, 184: 7, 126: 6, 23: 6, 251: 6}
+agent_exp_months most frequent: {35: 27, 17: 26, 23: 25, 9: 24, 52: 24}
+previous_calls most frequent: {9: 109, 1: 105, 4: 103, 3: 103, 6: 100}
+issue_count most frequent: {2: 317, 4: 231, 3: 219, 1: 125, 5: 108}
+hour most frequent: {18: 81, 10: 77, 15: 76, 19: 76, 13: 75}
+caller_age most frequent: {65: 32, 51: 27, 68: 24, 27: 23, 25: 23}
+Candidates: [{'column': 'queue_wait_sec', 'value': -999, 'count': 58}]
+
+UNIT MIXUP: within-team summaries, excluding impossible wait sentinels
+queue_wait_sec 
+             min  median        mean    max
+team                                      
+Team Alpha  0.0   305.0  310.900744  600.0
+Team Beta   9.0   319.5  318.510000  599.0
+Team Gamma  2.0   299.0  292.784661  597.0 
+Largest/smallest median: 1.068561872909699
+agent_exp_months 
+             min  median       mean  max
+team                                   
+Team Alpha    0    27.0  28.285383   60
+Team Beta     0    28.0  29.934884   59
+Team Gamma    0    32.0  30.587571   60 
+Largest/smallest median: 1.1851851851851851
+previous_calls 
+             min  median      mean  max
+team                                  
+Team Alpha    0     5.0  5.025522   10
+Team Beta     0     5.0  4.976744   10
+Team Gamma    0     5.0  5.045198   10 
+Largest/smallest median: 1.0
+issue_count 
+             min  median      mean  max
+team                                  
+Team Alpha    1     3.0  2.907193    5
+Team Beta     1     2.0  2.674419    5
+Team Gamma    1     3.0  2.971751    5 
+Largest/smallest median: 1.5
+hour 
+             min  median       mean  max
+team                                   
+Team Alpha    8    15.0  15.167053   22
+Team Beta     8    15.0  14.590698   22
+Team Gamma    8    15.0  15.124294   22 
+Largest/smallest median: 1.0
+caller_age 
+             min  median       mean  max
+team                                   
+Team Alpha   18    48.0  48.336427   80
+Team Beta    18    51.0  49.651163   80
+Team Gamma   18    51.0  50.358757   80 
+Largest/smallest median: 1.0625
+No group-scale separation: ranges overlap in the documented units.
+This is a dataset-specific conclusion, not a universal unit-error detector.
+
+DUPLICATES: extra identical rows: 0
+Repeated record IDs: 0
+
+STUCK SENSOR: consecutive full-day constant runs
+[
+  {
+    "column": "issue_count",
+    "value": 2.0,
+    "start_date": "2026-03-01",
+    "end_date": "2026-03-20",
+    "days": 20,
+    "rows": 113
+  }
+]
+Boundary evidence:
+             size  nunique  min  max
+date                               
+2026-02-27     5        3    2    4
+2026-02-28     6        4    2    5
+2026-03-01    11        1    2    2
+2026-03-02     6        1    2    2
+2026-03-03     7        1    2    2
+2026-03-04     2        1    2    2
+2026-03-05     5        1    2    2
+2026-03-06     7        1    2    2
+2026-03-07     9        1    2    2
+2026-03-08     2        1    2    2
+2026-03-09     4        1    2    2
+2026-03-10     6        1    2    2
+2026-03-11     7        1    2    2
+2026-03-12     1        1    2    2
+2026-03-13     4        1    2    2
+2026-03-14     4        1    2    2
+2026-03-15     6        1    2    2
+2026-03-16     3        1    2    2
+2026-03-17     7        1    2    2
+2026-03-18     7        1    2    2
+2026-03-19     9        1    2    2
+2026-03-20     6        1    2    2
+2026-03-21     4        3    2    4
+2026-03-22     1        1    3    3
+
+SPELLING: exact labels (repr exposes spaces)
+language 'hindi' 392
+language 'english' 275
+language 'regional' 183
+language 'hin.' 17
+language 'HINDI' 16
+language 'eng.' 15
+language 'english ' 14
+language ' hindi' 12
+language 'English' 12
+language 'hindi ' 12
+language ' english' 11
+language 'Hindi' 10
+language 'REGIONAL' 8
+language 'ENGLISH' 7
+language ' regional' 5
+language 'regional ' 5
+language 'Regional' 3
+language 'reg.' 3
+Later clean levels: ['english', 'hindi', 'regional']
+team 'Team Alpha' 431
+team 'Team Gamma' 354
+team 'Team Beta' 215
+Later clean levels: ['Team Alpha', 'Team Beta', 'Team Gamma']
+Language labels changed diagnostically: 150
+Normalized counts: {'hindi': 459, 'english': 334, 'regional': 207}

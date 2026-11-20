@@ -1,0 +1,19 @@
+# Local Python environment and caches
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+# Untouched extracted originals; canonical working paths are data/raw/.
+/data/train.csv
+/data/later.csv
+/data/holdout_features.csv
+
+# Generated cleaned data is separate from originals.
+/data/processed/*
+!/data/processed/.gitkeep
+
+# Local experiment artifacts (mlflow.db must remain committable).
+/mlruns/
+/mlartifacts/
+.env

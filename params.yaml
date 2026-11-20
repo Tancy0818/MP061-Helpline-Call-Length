@@ -1,0 +1,27 @@
+group_id: G247
+problem_id: MP061
+paths:
+  raw: data/raw
+  hash_manifest: reports/raw_data_sha256.json
+  findings_template: findings.yaml
+  findings: reports/findings.yaml
+  exploration_report: reports/stage1_exploration.txt
+analysis:
+  target: handle_min
+  group: team
+  post_event_column: duration_from_phone_bill
+  numeric_features:
+    - queue_wait_sec
+    - agent_exp_months
+    - previous_calls
+    - issue_count
+    - hour
+    - caller_age
+  sentinel_candidates: [-999, -1, 999, 9999]
+  minimum_stuck_days: 7
+  minimum_target_gap_ratio: 2.0
+  unit_scale_screen_ratio: 5.0
+  language_aliases:
+    hin.: hindi
+    eng.: english
+    reg.: regional

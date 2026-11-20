@@ -1,0 +1,53 @@
+group_id: G247
+problem_id: MP061
+data_issues:
+  leaking_column:
+    present: true
+    column: duration_from_phone_bill
+  unit_mixup:
+    present: false
+    column: null
+    group_value: null
+    factor: null
+  sentinel_value:
+    present: true
+    column: queue_wait_sec
+    value: -999
+    count: 58
+  duplicate_rows:
+    present: false
+    count: null
+  stuck_sensor:
+    present: true
+    column: issue_count
+    start_date: '2026-03-01'
+    end_date: '2026-03-20'
+  target_typos:
+    present: true
+    count: 12
+  spelling_variants:
+    present: true
+    column: language
+    true_levels: 3
+tracking:
+  experiment_name: null
+  best_run_id: null
+  registered_model_name: null
+  champion_version: null
+monitoring:
+  psi:
+    queue_wait_sec: null
+    agent_exp_months: null
+    previous_calls: null
+    issue_count: null
+    hour: null
+    caller_age: null
+  most_drifted_feature: null
+  mae_by_group:
+    Team Alpha: null
+    Team Beta: null
+    Team Gamma: null
+  worst_served_group: null
+  mae_v1_on_check: null
+  mae_v2_on_check: null
+  decision: null
