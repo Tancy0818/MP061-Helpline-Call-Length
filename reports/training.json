@@ -1,0 +1,67 @@
+{
+  "cutoff_date": "2026-05-25",
+  "fit_rows": 798,
+  "validation_rows": 202,
+  "data_sha256": "fbdf5a68c858dcbb086a41929d2551133c9b84bac87a668a955767af8be260fa",
+  "baseline_mae": 3.805891089108911,
+  "runs": [
+    {
+      "candidate": {
+        "name": "ridge_0_1",
+        "kind": "ridge",
+        "params": {
+          "alpha": 0.1
+        }
+      },
+      "mae": 0.7844624095070593,
+      "run_id": "0f8471d3cbaa4d34ab208856c0b8c0ca"
+    },
+    {
+      "candidate": {
+        "name": "ridge_10",
+        "kind": "ridge",
+        "params": {
+          "alpha": 10.0
+        }
+      },
+      "mae": 0.7894840363956079,
+      "run_id": "e2cc3f65258a47ad8015703d044a3715"
+    },
+    {
+      "candidate": {
+        "name": "hist_boost",
+        "kind": "hist_gradient_boosting",
+        "params": {
+          "max_iter": 160,
+          "max_leaf_nodes": 15,
+          "l2_regularization": 5.0
+        }
+      },
+      "mae": 0.9519311058058859,
+      "run_id": "d203851f78db40789b27002c2612114e"
+    },
+    {
+      "candidate": {
+        "name": "forest",
+        "kind": "random_forest",
+        "params": {
+          "n_estimators": 180,
+          "max_depth": 12,
+          "min_samples_leaf": 3
+        }
+      },
+      "mae": 1.313680733022173,
+      "run_id": "cd015b17134941188b2fae7b96af222c"
+    }
+  ],
+  "best_candidate": {
+    "name": "ridge_0_1",
+    "kind": "ridge",
+    "params": {
+      "alpha": 0.1
+    }
+  },
+  "best_run_id": "0f8471d3cbaa4d34ab208856c0b8c0ca",
+  "validation_mae": 0.7844624095070593,
+  "final_fit_rows": 1000
+}

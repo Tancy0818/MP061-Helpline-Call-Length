@@ -10,14 +10,18 @@ analysis:
   target: handle_min
   group: team
   post_event_column: duration_from_phone_bill
-  numeric_features:
-    - queue_wait_sec
-    - agent_exp_months
-    - previous_calls
-    - issue_count
-    - hour
-    - caller_age
-  sentinel_candidates: [-999, -1, 999, 9999]
+  numeric_features: &id001
+  - queue_wait_sec
+  - agent_exp_months
+  - previous_calls
+  - issue_count
+  - hour
+  - caller_age
+  sentinel_candidates:
+  - -999
+  - -1
+  - 999
+  - 9999
   minimum_stuck_days: 7
   minimum_target_gap_ratio: 2.0
   unit_scale_screen_ratio: 5.0
@@ -25,3 +29,43 @@ analysis:
     hin.: hindi
     eng.: english
     reg.: regional
+cleaning:
+  leaking_column: duration_from_phone_bill
+  queue_sentinel: -999
+  stuck_start: '2026-03-01'
+  stuck_end: '2026-03-20'
+  target_typo_minimum: 66.0
+  language_aliases:
+    hin.: hindi
+    eng.: english
+    reg.: regional
+training:
+  experiment_name: G247_MP061
+  registered_model_name: G247_MP061_Helpline
+  seed: 247
+  train_fraction: 0.8
+  numeric_features: *id001
+  categorical_features:
+  - language
+  - team
+  candidates:
+  - name: ridge_0_1
+    kind: ridge
+    params:
+      alpha: 0.1
+  - name: ridge_10
+    kind: ridge
+    params:
+      alpha: 10.0
+  - name: hist_boost
+    kind: hist_gradient_boosting
+    params:
+      max_iter: 160
+      max_leaf_nodes: 15
+      l2_regularization: 5.0
+  - name: forest
+    kind: random_forest
+    params:
+      n_estimators: 180
+      max_depth: 12
+      min_samples_leaf: 3

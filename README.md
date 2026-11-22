@@ -24,7 +24,7 @@ py -3.11 -m venv .venv
 
 In VS Code, select `.venv\Scripts\python.exe` as the Python interpreter.
 Direct executable paths avoid requiring PowerShell activation-policy changes.
-The current requirements cover Stage 1; add pinned libraries as stages need them.
+The current requirements cover Stage 2; add pinned libraries as stages need them.
 The Stage 3 Docker image must use `python:3.12-slim` per the assignment.
 
 ## Data locations and preservation
@@ -51,15 +51,16 @@ is configured. Do not share another group's data or copy `.git` folders.
 3. Stage 3: API, Docker, CI, Kubernetes and logging; third member commits.
 4. Stage 4: drift, retraining, promotion, predictions and submission; fourth member commits.
 
-Stage 1 local setup, analysis and data findings are complete. Later-stage
-tracking and monitoring entries remain null intentionally.
+Implementation through Stage 2 is present. Run training in your own checkout
+to generate tracking/model outputs. Monitoring remains pending for Stage 4.
 Later-stage code must be handed off separately with an exact changed-file list
 and test instructions. Each member pulls the latest shared repository, applies,
 reviews, tests and understands their changes, then commits and pushes using
 their own account and checkout. Review exact files and commit messages before
 committing. Never use another member's credentials or falsify commit authorship.
 
-The public GitHub repository, collaborators and remote are not configured yet.
+Shared public repository: https://github.com/Tancy0818/MP061-Helpline-Call-Length
+Confirm that all three collaborator invitations have been accepted.
 Each member must submit the same repository URL separately by November 29,
 2026, 11:59 PM, and be able to explain the whole project in the viva.
 
@@ -108,3 +109,7 @@ TestClient test is still a later-stage requirement.
 See `STAGE1_REVIEW.md` for the exact proposed first-commit files and the next
 member's checkout instructions. Git history should record actual completed work;
 there is no need to manufacture multiple progress commits for this preparation.
+
+## Stage 2
+
+See [Stage 2 instructions](docs/STAGE2.md) for cleaning, training, registry, and tests.
