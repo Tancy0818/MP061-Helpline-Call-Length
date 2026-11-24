@@ -24,7 +24,7 @@ py -3.11 -m venv .venv
 
 In VS Code, select `.venv\Scripts\python.exe` as the Python interpreter.
 Direct executable paths avoid requiring PowerShell activation-policy changes.
-The current requirements cover Stage 2; add pinned libraries as stages need them.
+The current requirements cover Stage 3; add pinned libraries as stages need them.
 The Stage 3 Docker image must use `python:3.12-slim` per the assignment.
 
 ## Data locations and preservation
@@ -51,7 +51,7 @@ is configured. Do not share another group's data or copy `.git` folders.
 3. Stage 3: API, Docker, CI, Kubernetes and logging; third member commits.
 4. Stage 4: drift, retraining, promotion, predictions and submission; fourth member commits.
 
-Implementation through Stage 2 is present. Run training in your own checkout
+Implementation through Stage 3 is present. Run training in your own checkout
 to generate tracking/model outputs. Monitoring remains pending for Stage 4.
 Later-stage code must be handed off separately with an exact changed-file list
 and test instructions. Each member pulls the latest shared repository, applies,
@@ -103,8 +103,7 @@ The sensor check works on complete calendar days. A matching row at the end of
 February 28 must not extend the fault interval because other rows that day differ.
 Four synthetic tests cover this boundary, missing calendar days, upper-tail gaps,
 and non-mutating language normalization. They do not require raw CSV files and
-can also be collected by pytest when it is introduced in Stage 2. The API
-TestClient test is still a later-stage requirement.
+can also be collected by pytest when it is introduced in Stage 2. Stage 3 adds the required API TestClient tests.
 
 See `STAGE1_REVIEW.md` for the exact proposed first-commit files and the next
 member's checkout instructions. Git history should record actual completed work;
@@ -113,3 +112,7 @@ there is no need to manufacture multiple progress commits for this preparation.
 ## Stage 2
 
 See [Stage 2 instructions](docs/STAGE2.md) for cleaning, training, registry, and tests.
+
+## Stage 3
+
+See [Stage 3 instructions](docs/STAGE3.md) for the API, Docker, CI, and Kubernetes.
