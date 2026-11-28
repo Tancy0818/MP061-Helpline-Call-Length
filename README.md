@@ -24,7 +24,7 @@ py -3.11 -m venv .venv
 
 In VS Code, select `.venv\Scripts\python.exe` as the Python interpreter.
 Direct executable paths avoid requiring PowerShell activation-policy changes.
-The current requirements cover Stage 3; add pinned libraries as stages need them.
+The current requirements cover Stage 4; add pinned libraries as stages need them.
 The Stage 3 Docker image must use `python:3.12-slim` per the assignment.
 
 ## Data locations and preservation
@@ -51,8 +51,8 @@ is configured. Do not share another group's data or copy `.git` folders.
 3. Stage 3: API, Docker, CI, Kubernetes and logging; third member commits.
 4. Stage 4: drift, retraining, promotion, predictions and submission; fourth member commits.
 
-Implementation through Stage 3 is present. Run training in your own checkout
-to generate tracking/model outputs. Monitoring remains pending for Stage 4.
+Implementation through Stage 4 is present. Run training in your own checkout
+to generate tracking/model outputs. Run monitoring and the final verifier before submission.
 Later-stage code must be handed off separately with an exact changed-file list
 and test instructions. Each member pulls the latest shared repository, applies,
 reviews, tests and understands their changes, then commits and pushes using
@@ -116,3 +116,7 @@ See [Stage 2 instructions](docs/STAGE2.md) for cleaning, training, registry, and
 ## Stage 3
 
 See [Stage 3 instructions](docs/STAGE3.md) for the API, Docker, CI, and Kubernetes.
+
+## Stage 4
+
+See [Stage 4 instructions](docs/STAGE4.md) for PSI, retraining, predictions, and submission.

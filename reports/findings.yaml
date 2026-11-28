@@ -33,21 +33,21 @@ tracking:
   experiment_name: G247_MP061
   best_run_id: 0f8471d3cbaa4d34ab208856c0b8c0ca
   registered_model_name: G247_MP061_Helpline
-  champion_version: 1
+  champion_version: 2
 monitoring:
   psi:
-    queue_wait_sec: null
-    agent_exp_months: null
-    previous_calls: null
-    issue_count: null
-    hour: null
-    caller_age: null
-  most_drifted_feature: null
+    queue_wait_sec: 0.0370145557612895
+    agent_exp_months: 0.04853645768692132
+    previous_calls: 5.744842213304826
+    issue_count: 0.04471575510967134
+    hour: 0.03080959844869131
+    caller_age: 0.029063288423863076
+  most_drifted_feature: previous_calls
   mae_by_group:
-    Team Alpha: null
-    Team Beta: null
-    Team Gamma: null
-  worst_served_group: null
-  mae_v1_on_check: null
-  mae_v2_on_check: null
-  decision: null
+    Team Alpha: 1.4131312787231372
+    Team Beta: 1.4373813731376173
+    Team Gamma: 9.151719574321234
+  worst_served_group: Team Gamma
+  mae_v1_on_check: 4.304250056084741
+  mae_v2_on_check: 1.0450737350435337
+  decision: promote
